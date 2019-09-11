@@ -1,0 +1,19 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.App{
+  padding: 20px;
+}
+.card{
+  background-color: rgb(221, 237, 243);
+  border-radius: 5px;
+  border: 1px solid grey;
+  display: flex; 
+}
+.pokemon-item+ .pokemon-item{
+  margin-top: 20px;
+}

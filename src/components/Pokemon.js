@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 class Pokemon extends React.Component {
-
   render(){
     return(
       <div className="card">
@@ -12,14 +10,12 @@ class Pokemon extends React.Component {
       <p className='name-text'>{this.props.pokeName}</p>
       <ul className="types-list">
         {this.props.pokeTypes.map(
-          (type)=>{
+          (type, index)=>{
             return (
-              <li className = 'Type'>
-                <div className="type-div">
-                  <p>
+              <li className = 'Type' key={index}>
+
                     {type}
-                  </p>
-                </div>
+
               </li>
             )
           }
