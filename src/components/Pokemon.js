@@ -12,10 +12,12 @@ class Pokemon extends React.Component {
         {this.props.pokeTypes.map(
           (type, index)=>{
             return (
-              <li className = 'Type' key={index}>
-
+              <li className = 'type' key={index}>
+                <div className="type-div">
+                  <p>
                     {type}
-
+                  </p>
+                </div>
               </li>
             )
           }
