@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {List} from './List';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: (List)
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <ul className="pokeList">
+          {this.state.list.map((pokemon) => {
+        return (
+          <li className = 'pokemon-item' key={pokemon.id}>
+            <div className="card">
+              <div className = "img-div">
+                <img src={pokemon.url} alt={pokemon.name} className = "image"/>
+              </div>
+              <p className='name-text'>{pokemon.name}</p>
+              <ul className="types-list">
+                {pokemon.types.map(
+                  (type)=>{
+                    return (
+                      <li className = 'Type'>
+                        <div className="type-div">
+                          <p>
+                            {type}
+                          </p>
+                        </div>
+                      </li>
+                    )
+                  }
+                )}
+              </ul>
+            </div>
+          </li>
+        );
+      })}
+
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
