@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Pokemon extends React.Component {
+  applyZoom(zoom){
+    return (zoom === '' ? 'zoom' :  '')
+  }
   render(){
+
     return(
-      <div className="card">
+      <div className={`card ${this.applyZoom(this.props.zoom)}`}>
       <div className = "img-div">
         <img src={this.props.pokeUrl} alt={this.props.pokeName} className = "image"/>
       </div>
@@ -26,6 +31,13 @@ class Pokemon extends React.Component {
     </div>
     )
   }
+}
+Pokemon.propTypes = {
+  zoom : PropTypes.string.isRequired,
+  pokeUrl : PropTypes.string.isRequired,
+  pokeName : PropTypes.string.isRequired,
+  pokeTypes : PropTypes.array.isRequired,
+
 }
 
 export default Pokemon;
