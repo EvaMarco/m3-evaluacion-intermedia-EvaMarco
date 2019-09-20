@@ -1,47 +1,39 @@
 import React from 'react';
 import {List} from './List';
+import PokeList from './components/PokeList';
+import './scss/main.scss';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: (List)
+      list: (List),
+      id: null
     }
+    this.zoomItem = this.zoomItem.bind(this);
   }
-
+  zoomItem(event) {
+    const item = parseInt(event.currentTarget.id);  
+    this.setState(prevState=>{
+      if(prevState.id === null){
+        return {id:item}
+      }
+      else{
+        return {id:null}
+      }
+    }
+ 
+    );
+  }
   render() {
     return (
       <div className="App">
-        <ul className="pokeList">
-          {this.state.list.map((pokemon) => {
-        return (
-          <li className = 'pokemon-item' key={pokemon.id}>
-            <div className="card">
-              <div className = "img-div">
-                <img src={pokemon.url} alt={pokemon.name} className = "image"/>
-              </div>
-              <p className='name-text'>{pokemon.name}</p>
-              <ul className="types-list">
-                {pokemon.types.map(
-                  (type)=>{
-                    return (
-                      <li className = 'Type'>
-                        <div className="type-div">
-                          <p>
-                            {type}
-                          </p>
-                        </div>
-                      </li>
-                    )
-                  }
-                )}
-              </ul>
-            </div>
-          </li>
-        );
-      })}
-
-        </ul>
+        <h1 className = 'title'>Mi lista de Pokemon</h1>
+        <PokeList 
+          list = {this.state.list}
+          clickAction = {this.zoomItem}
+          id = {this.state.id}
+        />
       </div>
     );
   }
